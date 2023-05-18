@@ -8,6 +8,9 @@ public class BlackJack {
 
         System.out.println("Welcome to Blackjack!");
 
+        //Create and start the Game
+        Game blackJack = new Game();
+
         // Create the playing deck
         Deck playingDeck = new Deck();
         playingDeck.createFullDeck();
@@ -57,7 +60,8 @@ public class BlackJack {
                 System.out.println("Your hand looks like this: ");
                 for (int i = 0; i < playerHand.deckSize(); i++) {
                     System.out.print(playerHand.getCard(i).toString() + " ");
-                };
+                }
+                ;
 
                 System.out.println("Your hand total is " + playerHand.cardsValue());
 
@@ -126,7 +130,7 @@ public class BlackJack {
                     endRound = true;
 
                 }
-                }
+            }
 
             if ((playerHand.cardsValue() > dealerHand.cardsValue()) && !endRound) {
               System.out.println("You win the hand!");
@@ -141,9 +145,15 @@ public class BlackJack {
             dealerHand.moveAllToDeck(playingDeck);
             System.out.println("End of Round");
         }
+        blackJack.checkOutcome(playerHand, dealerHand);
 
 
             System.out.println("Game Over! No money left !");
+
+        // display  scores
+        System.out.println("Wins: " + blackJack.getWins());
+        System.out.println("Losses: " + blackJack.getLosses());
+        System.out.println("Pushes: " + blackJack.getPushes());
         }
     }
 
